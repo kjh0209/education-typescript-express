@@ -14,7 +14,7 @@ import csrRouter from "./routes/csr";
 const app = express();
 
 //CORS 설정
-const whitelist = [`http://localhost:3000`, "https://edu.techceo.kr"];
+const whitelist = [`http://localhost:3000`,`http://localhost:3001`, "https://edu.techceo.kr"];
 const corsOptions: CorsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -53,7 +53,7 @@ app.use(allowCorsHeaders); // 노출 되는 응답 헤더 늘려주는 미들웨
 app.use("/cat", catRouter);
 
 app.use("/auth", authMiddleWare, catRouter);
-app.use("/static", express.static(path.join(__dirname, "..", "public")));
+app.use("/static", express.static(path.join(__dirname, "..", "public"))); //public 폴더의 자원들을 가져오는 것.
 app.use("/csr", csrRouter);
 app.use("/ssr", ssrRouter);
 app.use("/short-url", shortUrlRouter);
