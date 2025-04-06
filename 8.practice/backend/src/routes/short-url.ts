@@ -57,7 +57,7 @@ shortUrlRouter.get("/", (req: Request, res: Response) => {
     const shortCode = req.query.shortCode as string;
 
     if (!shortCode || !mappingTable[shortCode]) {
-      res.status(404).sendFile("404.html", { root: "backend/public" });
+      res.status(404).sendFile("404.html", { root: "public" });
       return;
     }
 
